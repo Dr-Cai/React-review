@@ -1,51 +1,31 @@
-import { Layout, Menu } from 'antd';
-import { UploadOutlined, UserOutlined, VideoCameraOutlined } from '@ant-design/icons';
+import { Layout, Menu, Breadcrumb } from 'antd';
+
 import { Component } from 'react';
 import './App.css';
+import SideMenu from './components/SideMenu'
 
-const { Header, Content, Footer, Sider } = Layout;
+const { Header, Content, Footer } = Layout;
 
 class App extends Component {
   render(){
     return (
-      <Layout>
-      <Sider
-        breakpoint="lg"
-        collapsedWidth="0"
-        onBreakpoint={broken => {
-          console.log(broken);
-        }}
-        onCollapse={(collapsed, type) => {
-          console.log(collapsed, type);
-        }}
-      >
-        <div className="logo" />
-        <Menu theme="dark" mode="inline" defaultSelectedKeys={['4']}>
-          <Menu.Item key="1" icon={<UserOutlined />}>
-            nav 1
-          </Menu.Item>
-          <Menu.Item key="2" icon={<VideoCameraOutlined />}>
-            nav 2
-          </Menu.Item>
-          <Menu.Item key="3" icon={<UploadOutlined />}>
-            nav 3
-          </Menu.Item>
-          <Menu.Item key="4" icon={<UserOutlined />}>
-            nav 4
-          </Menu.Item>
-        </Menu>
-      </Sider>
-      <Layout>
-        <Header className="site-layout-sub-header-background" style={{ padding: 0 }} />
-        <Content style={{ margin: '24px 16px 0' }}>
+      <Layout style={{ minHeight: '100vh' }}>
+        <SideMenu/>
+      <Layout className="site-layout">
+        <Header className="site-layout-background" style={{ padding: 0 }} />
+        <Content style={{ margin: '0 16px' }}>
+          <Breadcrumb style={{ margin: '16px 0' }}>
+            <Breadcrumb.Item>User</Breadcrumb.Item>
+            <Breadcrumb.Item>Bill</Breadcrumb.Item>
+          </Breadcrumb>
           <div className="site-layout-background" style={{ padding: 24, minHeight: 360 }}>
-            content
+            Bill is a cat.
           </div>
         </Content>
         <Footer style={{ textAlign: 'center' }}>Ant Design ©2018 Created by Ant UED</Footer>
       </Layout>
     </Layout>
-    )
+  )
   }
 }
 export default App;
